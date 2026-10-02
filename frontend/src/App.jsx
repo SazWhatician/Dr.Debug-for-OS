@@ -12,13 +12,25 @@ export default function App() {
   const [selectedProcess, setSelectedProcess] = useState(null);
   const [pendingRemediation, setPendingRemediation] = useState(null);
   const [showConfig, setShowConfig] = useState(false);
+  const [cpuHistory, setCpuHistory] = useState([]);
+  const [ramHistory, setRamHistory] = useState([]);
   const wsRef = useRef(null);
 
+  const updateTelemetryData = (data) => {
+    setTelemetry(data);
+    if (data?.system) {
+      const cpu = data.system.cpu_total_percent || 0;
+      const ram = data.system.ram_percent || 0;
+      setCpuHistory((prev) => [...prev.slice(-24), cpu]);
+      setRamHistory((prev) => [...prev.slice(-24), ram]);
+    }
+  };
+
   useEffect(() => {
-    // Initial REST fallback load
+    // Initial REST load
     fetch('/api/processes')
       .then((res) => res.json())
-      .then((data) => setTelemetry(data))
+      .then((data) => updateTelemetryData(data))
       .catch(() => {});
 
     // Setup live WebSocket
@@ -36,14 +48,14 @@ export default function App() {
       ws.onmessage = (event) => {
         try {
           const data = JSON.parse(event.data);
-          setTelemetry(data);
+          updateTelemetryData(data);
         } catch {}
       };
 
       ws.onclose = () => {
         setIsConnected(false);
         if (shouldReconnect) {
-          setTimeout(connectWs, 2000);
+          setTimeout(connectWs, 1500);
         }
       };
 
@@ -68,13 +80,16 @@ export default function App() {
     setPendingRemediation({ proc, action, details, priority });
   };
 
+  const handleQuickAction = (proc, action) => {
+    setPendingRemediation({ proc, action, details: null, priority: 'NORMAL' });
+  };
+
   const handleRemediateSuccess = () => {
     setPendingRemediation(null);
     setSelectedProcess(null);
-    // Refresh telemetry immediately
     fetch('/api/processes')
       .then((res) => res.json())
-      .then((data) => setTelemetry(data))
+      .then((data) => updateTelemetryData(data))
       .catch(() => {});
   };
 
@@ -84,6 +99,8 @@ export default function App() {
         telemetry={telemetry}
         isConnected={isConnected}
         onOpenConfig={() => setShowConfig(true)}
+        cpuHistory={cpuHistory}
+        ramHistory={ramHistory}
       />
 
       <AlertBanner
@@ -95,6 +112,7 @@ export default function App() {
         <ProcessTable
           processes={telemetry?.top_processes}
           onSelectProcess={handleSelectProcess}
+          onQuickAction={handleQuickAction}
           selectedPid={selectedProcess?.pid}
         />
       </main>
