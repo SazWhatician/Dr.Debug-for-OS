@@ -45,20 +45,12 @@ def find_available_port(host: str, start_port: int, max_attempts: int = 10) -> i
     return start_port
 
 def launch_desktop_window(url: str):
-    """Launches Microsoft Edge in dedicated standalone app-mode window."""
-    time.sleep(1.0)
-    edge_paths = [
-        os.path.expandvars(r"%ProgramFiles(x86)%\Microsoft\Edge\Application\msedge.exe"),
-        os.path.expandvars(r"%ProgramFiles%\Microsoft\Edge\Application\msedge.exe"),
-    ]
-    for p in edge_paths:
-        if os.path.exists(p):
-            try:
-                subprocess.Popen([p, f"--app={url}", "--window-size=1340,840"])
-                return
-            except Exception:
-                pass
-    webbrowser.open(url)
+    """Launches the user's default browser or Edge app window."""
+    time.sleep(0.8)
+    try:
+        webbrowser.open(url)
+    except Exception:
+        pass
 
 def main():
     parser = argparse.ArgumentParser(description="Windows AI Process Doctor")
