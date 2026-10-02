@@ -1,6 +1,6 @@
 # 📘 Phase 3: Anomaly Heuristics Engine
 
-**Status:** ⚪ *Planned*  
+**Status:** 🟢 *Completed*  
 **Last Updated:** 2026-10-02  
 **Target Module:** `backend/doctor/heuristics.py`
 
@@ -36,3 +36,4 @@
 
 ## 📝 Phase Completion & Change Notes
 - **2026-10-02**: Formalized anomaly detection rules, thresholds, and severity classifications.
+- **2026-10-02**: Implemented `evaluate_process_anomalies` in `backend/doctor/heuristics.py` covering CPU runaway, memory leaks, hung GUI windows, handle thrashing, and thread floods. Verified with unit tests in `tests/test_heuristics.py`. Status updated to 🟢 Completed.
