@@ -1,6 +1,6 @@
 # 📘 Phase 2: Win32 Deep Probe & App Responsiveness
 
-**Status:** ⚪ *Planned*  
+**Status:** 🟢 *Completed*  
 **Last Updated:** 2026-10-02  
 **Target Module:** `backend/doctor/probe.py`
 
@@ -40,3 +40,4 @@ When an application spawns multiple helper subprocesses (e.g. Chrome rendering t
 
 ## 📝 Phase Completion & Change Notes
 - **2026-10-02**: Outlined Win32 ctypes integration, window enumeration, and message queue health checks.
+- **2026-10-02**: Implemented `is_process_hung` with `user32.EnumWindows` + `IsHungAppWindow` and `get_process_details` in `backend/doctor/probe.py`. Added comprehensive error boundaries for `psutil.AccessDenied` and validated tests in `tests/test_probe.py`. Status updated to 🟢 Completed.
