@@ -1,6 +1,6 @@
 # 📘 Phase 4: AI Doctor Diagnostics & Safe Remediation
 
-**Status:** ⚪ *Planned*  
+**Status:** 🟢 *Completed*  
 **Last Updated:** 2026-10-02  
 **Target Modules:** `backend/doctor/diagnostics.py`, `backend/doctor/remediation.py`
 
@@ -42,3 +42,4 @@ The Doctor checks both binary image name and executable path verification (`Syst
 
 ## 📝 Phase Completion & Change Notes
 - **2026-10-02**: Designed safe remediation pipeline, whitelist guardrails, and offline vs LLM diagnostic synthesis.
+- **2026-10-02**: Implemented `remediate_process` in `backend/doctor/remediation.py` (with PID reuse guard and protected OS whitelist) and `diagnose_process` in `backend/doctor/diagnostics.py` (with offline heuristics and Gemini/Ollama HTTP integration). Verified unit tests in `tests/test_remediation.py`. Status updated to 🟢 Completed.
