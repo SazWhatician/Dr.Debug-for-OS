@@ -1,6 +1,6 @@
 # 📘 Phase 1: Real-Time Telemetry & Ring Buffer Engine
 
-**Status:** 🟡 *In Progress*  
+**Status:** 🟢 *Completed*  
 **Last Updated:** 2026-10-02  
 **Target Module:** `backend/doctor/telemetry.py`
 
@@ -44,3 +44,4 @@ If the slope is consistently positive over 30+ seconds while page faults continu
 
 ## 📝 Phase Completion & Change Notes
 - **2026-10-02**: Initial architecture drafted, telemetry data structures and rate-of-change formulas defined.
+- **2026-10-02**: Implemented `ProcessMetricsBuffer` and `TelemetrySampler` in `backend/doctor/telemetry.py`. Verified ring buffer FIFO pushout, memory slope calculation, and snapshot collection with full unit tests passing in `tests/test_telemetry.py`. Status updated to 🟢 Completed.
