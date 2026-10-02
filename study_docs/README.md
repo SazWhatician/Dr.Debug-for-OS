@@ -8,12 +8,12 @@ Welcome to the comprehensive study and engineering guide for the **AI Process Do
 
 | Phase | Description | Status | Target Deliverables |
 | :--- | :--- | :---: | :--- |
-| **Phase 1** | **Real-Time Telemetry & Ring Buffer** | 🟡 *In Progress* | `doctor/telemetry.py` (psutil, 60s ring buffer, metrics delta) |
-| **Phase 2** | **Win32 Deep Probe & App Responsiveness** | ⚪ *Planned* | `doctor/probe.py` (`IsHungAppWindow`, handles, DLLs, CLI) |
-| **Phase 3** | **Anomaly Heuristics Engine** | ⚪ *Planned* | `doctor/heuristics.py` (CPU runaway, leak slope, thrashing) |
-| **Phase 4** | **AI Doctor Synthesizer & Safe Remediation** | ⚪ *Planned* | `doctor/diagnostics.py`, `doctor/remediation.py` (Guardrails) |
-| **Phase 5** | **FastAPI Streaming Server & WebSockets** | ⚪ *Planned* | `backend/server.py` (`/ws/telemetry`, REST endpoints) |
-| **Phase 6** | **Cyber-Glass Desktop Cockpit (React/Vite)** | ⚪ *Planned* | `frontend/` (60fps charts, alerts, AI drawer) |
+| **Phase 1** | **Real-Time Telemetry & Ring Buffer** | 🟢 *Completed* | `doctor/telemetry.py` (psutil, 60s ring buffer, metrics delta) |
+| **Phase 2** | **Win32 Deep Probe & App Responsiveness** | 🟢 *Completed* | `doctor/probe.py` (`IsHungAppWindow`, handles, DLLs, CLI) |
+| **Phase 3** | **Anomaly Heuristics Engine** | 🟢 *Completed* | `doctor/heuristics.py` (CPU runaway, leak slope, thrashing) |
+| **Phase 4** | **AI Doctor Synthesizer & Safe Remediation** | 🟢 *Completed* | `doctor/diagnostics.py`, `doctor/remediation.py` (Guardrails) |
+| **Phase 5** | **FastAPI Streaming Server & WebSockets** | 🟢 *Completed* | `backend/server.py` (`/ws/telemetry`, REST endpoints) |
+| **Phase 6** | **Cyber-Glass Desktop Cockpit (React/Vite)** | 🟢 *Completed* | `frontend/` (60fps charts, alerts, AI drawer) |
 
 ---
 
